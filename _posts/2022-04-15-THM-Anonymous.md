@@ -5,7 +5,7 @@ description: ""
 date: 2022-04-15 07:00:00 +0100
 categories : [TryHackMe]
 tags: [tryhackme, linux, smb, ftp]
-img_path: /assets/img/tryhackme
+#img_path: /assets/img/tryhackme
 image:
   src:
   width:
