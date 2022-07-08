@@ -2,7 +2,7 @@
 title: "HackThisSite - Peace Poetry: HACKED"
 author: Nasrallah
 description: ""
-date: 2022-05-23 00:00:00 +0100
+date: 2022-05-23 00:00:00 +0000
 categories : [HackThisSite, Realistic]
 tags: [hackthissite, hts, easy, web, realistic]
 ---

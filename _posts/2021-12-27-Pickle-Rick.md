@@ -2,7 +2,7 @@
 title: "TryHackMe - Pickle Rick"
 author: Nasrallah
 description: "Writeup of easy machine Pickle Rick"
-date: 2021-12-27 00:00:00 +0100
+date: 2021-12-27 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, web, reverse-shell, python, gobuster]
 image:

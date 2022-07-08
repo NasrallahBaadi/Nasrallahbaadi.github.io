@@ -2,7 +2,7 @@
 title: "TryHackMe - Mr Robot CTF"
 author: Nasrallah
 description: "Walkthrough of Mr Robot CTF from TryHackMe"
-date: 2021-12-21 00:00:00 +0100
+date: 2021-12-21 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, web, privesc, reverse-shell, wordpress, bruteforce, hydra, suid, john, crack, gobuster]
 image:

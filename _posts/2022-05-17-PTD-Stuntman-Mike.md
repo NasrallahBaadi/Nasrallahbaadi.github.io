@@ -2,7 +2,7 @@
 title: "PwnTillDawn - Stuntman Mike"
 author: Nasrallah
 description: ""
-date: 2022-05-17 00:00:00 +0100
+date: 2022-05-17 00:00:00 +0000
 categories : [PwnTillDawn]
 tags: [pwntilldawn, linux, hydra]
 ---

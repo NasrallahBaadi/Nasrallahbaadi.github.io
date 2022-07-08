@@ -2,7 +2,7 @@
 title: "TryHackMe - Ignite"
 author: Nasrallah
 description: ""
-date: 2022-03-21 00:00:00 +0100
+date: 2022-03-21 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, rce, exploit]
 #img_path: /assets/img/tryhackme

@@ -2,7 +2,7 @@
 title: "TryHackMe - Blueprint"
 author: Nasrallah
 description: ""
-date: 2022-05-25 00:00:00 +0100
+date: 2022-05-25 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, windows, metasploit, meterpreter, easy, msfvenom]
 ---

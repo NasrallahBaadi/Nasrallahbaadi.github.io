@@ -2,7 +2,7 @@
 title: "TryHackMe - CTF Collection vol 1"
 author: Nasrallah
 description: ""
-date: 2022-05-11 00:00:00 +0100
+date: 2022-05-11 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, steganography, cipher, xxd, wireshark]
 ---

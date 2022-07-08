@@ -2,7 +2,7 @@
 title: "TryHackMe - Alfred"
 author: Nasrallah
 description: ""
-date: 2022-05-27 00:00:00 +0100
+date: 2022-05-27 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, windows, easy, jenkins, powershell, metasploit, msfvenom, meterpreter]
 ---

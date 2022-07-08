@@ -2,7 +2,7 @@
 title: "TryHackMe - c4ptur3th3fl4g"
 author: Nasrallah
 description: ""
-date: 2022-05-29 03:00:00 +0100
+date: 2022-05-29 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, easy, spectrogram, steganography, encoding]
 img_path: /assets/img/tryhackme/capture/

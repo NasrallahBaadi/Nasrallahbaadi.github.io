@@ -2,7 +2,7 @@
 title: "TryHackMe - Vulnversity"
 author: Nasrallah
 description: ""
-date: 2022-01-07 00:00:00 +0100
+date: 2022-01-07 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, web, reverse-shell, suid, filter]
 image:

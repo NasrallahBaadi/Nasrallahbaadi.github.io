@@ -2,7 +2,7 @@
 title: "TryHackMe - Skynet"
 author: Nasrallah
 description: ""
-date: 2022-03-27 00:00:00 +0100
+date: 2022-03-27 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, web, lfi, rfi, cronjob, wildcard, smb]
 #img_path: /assets/img/tryhackme

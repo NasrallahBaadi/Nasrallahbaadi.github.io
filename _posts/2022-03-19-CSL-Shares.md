@@ -2,7 +2,7 @@
 title: "CyberSecLabs - Shares"
 author: Nasrallah
 description: ""
-date: 2022-03-19 00:00:00 +0100
+date: 2022-03-19 00:00:00 +0000
 categories : [CyberSecLabs]
 tags: [cyberselabs, linux, nfs, john, crack]
 #img_path: /assets/img/cyberselabs

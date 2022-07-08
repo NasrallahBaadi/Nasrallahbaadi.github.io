@@ -2,7 +2,7 @@
 title: "TryHackMe - Bounty Hacker"
 author: Nasrallah
 description: ""
-date: 2022-04-03 07:00:00 +0100
+date: 2022-04-03 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, ftp, hydra, bruteforce, tar, sudo]
 #img_path: /assets/img/tryhackme

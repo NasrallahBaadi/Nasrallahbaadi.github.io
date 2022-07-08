@@ -2,7 +2,7 @@
 title: "TryHackMe - Inclusion"
 author: Nasrallah
 description: ""
-date: 2022-04-05 07:00:00 +0100
+date: 2022-04-05 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, sudo, lfi]
 #img_path: /assets/img/tryhackme

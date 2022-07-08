@@ -2,7 +2,7 @@
 title: "HackThisSite - Uncle Arnold's Local Band Review"
 author: Nasrallah
 description: ""
-date: 2022-05-19 00:00:00 +0100
+date: 2022-05-19 00:00:00 +0000
 categories : [HackThisSite, Realistic]
 tags: [hackthissite, hts, easy, web, realistic]
 ---

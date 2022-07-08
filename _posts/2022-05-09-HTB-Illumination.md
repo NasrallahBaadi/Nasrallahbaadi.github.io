@@ -2,7 +2,7 @@
 title: "HackTheBox - Illumination"
 author: Nasrallah
 description: ""
-date: 2022-05-09 00:00:00 +0100
+date: 2022-05-09 00:00:00 +0000
 categories : [HackTheBox, Challenges, Forensics]
 tags: [hackthebox, forensics, easy, challenges, git]
 ---
