@@ -2,7 +2,7 @@
 title: "HackTheBox - Preignition"
 author: Nasrallah
 description: ""
-date:  00:00:00 +0000
+date: 2022-06-17 00:00:00 +0000
 categories : [HackTheBox]
 tags: [hackthebox, linux, easy]
 img_path: /assets/img/hackthebox/machines/preignition/
@@ -15,7 +15,7 @@ img_path: /assets/img/hackthebox/machines/preignition/
 
 # **Description**
 
-Hello l33ts, I hope you are doing well. Today we are going to look at [Preignition](https://app.hackthebox.com/starting-point?tier=0) from [HackTheBox](https://www.hackthebox.com).
+Hello l33ts, I hope you are doing well. Today we are going to look at [Preignition](https://app.hackthebox.com/starting-point?tier=0) from [HackTheBox](https://www.hackthebox.com). It's an easy machine running a webserver, we find a login page through a directory scan, and use some default credentials to get in.
 
 # **Enumeration**
 ## nmap
