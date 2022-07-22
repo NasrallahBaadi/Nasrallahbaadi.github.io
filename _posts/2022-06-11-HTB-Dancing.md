@@ -23,6 +23,7 @@ image:
 Hello l33ts, I hope you are doing well. Today we are going to look at [Dancing](https://app.hackthebox.com/starting-point?tier=0) from [HackTheBox](https://www.hackthebox.com). It's a windows machine running smb with a misconfigured share that permits to log in to it without valid credentials.
 
 # **Enumeration**
+
 ## nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -Pn {target_IP}`.
@@ -33,7 +34,7 @@ We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -Pn {ta
 
 - -T4: Aggressive scan to provide faster results.
 
-```Terminal
+```terminal
 Nmap scan report for 10.129.196.235 (10.129.196.235)
 Host is up (0.20s latency).
 Not shown: 997 closed tcp ports (reset)

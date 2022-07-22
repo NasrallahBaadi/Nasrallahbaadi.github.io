@@ -28,7 +28,7 @@ We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -p- {ta
 
 - -T4: Aggressive scan to provide faster results.
 
-```Terminal
+```terminal
 Nmap scan report for 10.129.190.211 (10.129.190.211)
 Host is up (0.18s latency).
 Not shown: 65534 closed tcp ports (reset)
@@ -36,7 +36,7 @@ PORT     STATE SERVICE
 6379/tcp open  redis   Redis key-value store 5.0.7
 ```
 
-Port 6379 ios open running `redis`.
+Port 6379 redis open running `redis`.
 
 Redis (**RE**mote **DI**ctionary **S**erver) is an open-source advanced NoSQL key-value data store used as a database, cache, and message broker. The data is stored in a dictionary format having key-value pairs. It is typically used for short term storage of data that needs fast retrieval. Redis does backup data to hard drives to provide consistency.
 
@@ -52,7 +52,7 @@ We see a prompt in the terminal after we connect successfully.
 One of the basic Redis enumeration commands is info which returns information and statistics about the
 Redis server.
 
-```Ternimal
+```terminal
 $ redis-cli -h 10.129.190.211                                                                                                                      130 ⨯
 10.129.190.211:6379> info     
 # Server                   
@@ -107,7 +107,6 @@ cluster_enabled:0
 # Keyspace
 db0:keys=4,expires=0,avg_ttl=0
 
-10.129.190.211:6379> 
 ```
 
 The keyspace section provides statistics on the main dictionary of each database. The statistics include the
@@ -131,4 +130,3 @@ To view the value of a key, we use `get {key}`.
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
-# References

@@ -27,7 +27,7 @@ We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target
 
 - -T4: Aggressive scan to provide faster results.
 
-```Bash
+```terminal
 Nmap scan report for 10.10.209.108
 Host is up (0.097s latency).
 Not shown: 997 filtered tcp ports (no-response)

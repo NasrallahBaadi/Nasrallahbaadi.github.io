@@ -29,7 +29,7 @@ We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target
 
 - -T4: Aggressive scan to provide faster results.
 
-```Terminal
+```terminal
 map scan report for 10.10.102.48 (10.10.102.48)                                                                                                              
 Host is up (0.25s latency).                                                                                                                                   
 Not shown: 997 closed tcp ports (reset) 
