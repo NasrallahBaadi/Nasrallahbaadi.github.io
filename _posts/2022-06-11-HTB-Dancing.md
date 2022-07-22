@@ -3,7 +3,7 @@ title: "HackTheBox - Dancing"
 author: Nasrallah
 description: ""
 date: 2022-06-11 00:00:00 +0000
-categories : [HackTheBox]
+categories : [HackTheBox, Machines]
 tags: [hackthebox, windows, smb, easy]
 img_path: /assets/img/hackthebox/machines/dancing/
 image:
