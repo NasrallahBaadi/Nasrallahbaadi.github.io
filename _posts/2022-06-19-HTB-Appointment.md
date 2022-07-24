@@ -3,7 +3,7 @@ title: "HackTheBox - Appointment"
 author: Nasrallah
 description: ""
 date: 2022-06-19 00:00:00 +0000
-categories : [HackTheBox]
+categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, machines, easy, sqli]
 img_path: /assets/img/hackthebox/machines/appointment/
 ---

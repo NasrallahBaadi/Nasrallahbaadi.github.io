@@ -3,7 +3,7 @@ title: "HackTheBox - Responder"
 author: Nasrallah
 description: ""
 date: 2022-06-25 00:00:00 +0000
-categories : [HackTheBox]
+categories : [HackTheBox, Machines]
 tags: [hackthebox, windows, easy, lfi, responder, winrm, cracking, john]
 img_path: /assets/img/hackthebox/machines/responder/
 ---

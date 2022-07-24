@@ -3,7 +3,7 @@ title: "HackTheBox - Sequel"
 author: Nasrallah
 description: ""
 date: 2022-06-21 00:00:00 +0000
-categories : [HackTheBox]
+categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, easy, sql, mysql]
 img_path: /assets/img/hackthebox/machines/sequel/
 ---

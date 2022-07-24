@@ -3,7 +3,7 @@ title: "HackTheBox - Preignition"
 author: Nasrallah
 description: ""
 date: 2022-06-17 00:00:00 +0000
-categories : [HackTheBox]
+categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, easy]
 img_path: /assets/img/hackthebox/machines/preignition/
 ---
