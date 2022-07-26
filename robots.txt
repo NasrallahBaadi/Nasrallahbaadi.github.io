@@ -1,0 +1,5 @@
+User-agent: *
+
+Disallow: /norobots/
+
+Sitemap: https://nasrallahbaadi.github.io/sitemap.xml

